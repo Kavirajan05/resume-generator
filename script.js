@@ -196,8 +196,15 @@ document.getElementById('resumeForm').addEventListener('submit', async function(
         });
         
         if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.detail || 'Failed to generate resume');
+            let errorMessage = 'Failed to generate resume';
+            try {
+                const error = await response.json();
+                errorMessage = error.detail || errorMessage;
+            } catch (e) {
+                // If response is not JSON, use status text
+                errorMessage = response.statusText || errorMessage;
+            }
+            throw new Error(errorMessage);
         }
         
         // Download PDF
