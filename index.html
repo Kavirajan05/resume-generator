@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Builder - Create Professional Resumes</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>📝 Professional Resume Builder</h1>
+        <p>Create your professional resume in minutes</p>
+      </header>
+
+      <form id="resumeForm">
+        <!-- Profile Section -->
+        <section class="form-section">
+          <h2>👤 Profile</h2>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone *</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="website">Website</label>
+              <input
+                type="url"
+                id="website"
+                name="website"
+                placeholder="https://yourwebsite.com"
+              />
+            </div>
+          </div>
+        </section>
+
+        <!-- Objective Section -->
+        <section class="form-section">
+          <h2>🎯 Career Objective</h2>
+          <div class="form-group">
+            <textarea
+              id="objective"
+              name="objective"
+              rows="3"
+              placeholder="Brief career objective or summary..."
+            ></textarea>
+          </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="form-section">
+          <h2>✅ Skills & Certifications</h2>
+          <div class="form-group">
+            <label>Select Skills</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label">
+                <input type="checkbox" name="skills" value="Python" /> Python
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="skills" value="C++" /> C++
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="skills" value="Machine Learning" />
+                Machine Learning
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="skills" value="Data Science" />
+                Data Science
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="skills" value="HTML/CSS" />
+                HTML/CSS
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" name="skills" value="JavaScript" />
+                JavaScript
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="otherSkills">Other Skills (comma-separated)</label>
+            <input
+              type="text"
+              id="otherSkills"
+              name="otherSkills"
+              placeholder="React, Node.js, Docker..."
+            />
+          </div>
+          <div class="form-group">
+            <label for="certifications">Certifications (comma-separated)</label>
+            <input
+              type="text"
+              id="certifications"
+              name="certifications"
+              placeholder="AWS Certified, Google Analytics..."
+            />
+          </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section class="form-section">
+          <h2>🏢 Work Experience</h2>
+          <div id="experienceContainer">
+            <div class="experience-item">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Role</label>
+                  <input
+                    type="text"
+                    name="exp_role[]"
+                    placeholder="Software Engineer"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Company</label>
+                  <input
+                    type="text"
+                    name="exp_company[]"
+                    placeholder="Company Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>From</label>
+                  <input type="text" name="exp_from[]" placeholder="Jan 2020" />
+                </div>
+                <div class="form-group">
+                  <label>To</label>
+                  <input type="text" name="exp_to[]" placeholder="Present" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea
+                  name="exp_description[]"
+                  rows="2"
+                  placeholder="Key responsibilities and achievements..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-add" onclick="addExperience()">
+            + Add Experience
+          </button>
+        </section>
+
+        <!-- Education Section -->
+        <section class="form-section">
+          <h2>🎓 Education</h2>
+          <div id="educationContainer">
+            <div class="education-item">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Degree</label>
+                  <input
+                    type="text"
+                    name="edu_degree[]"
+                    placeholder="Bachelor of Science"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Institution</label>
+                  <input
+                    type="text"
+                    name="edu_institution[]"
+                    placeholder="University Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Year</label>
+                  <input type="text" name="edu_year[]" placeholder="2020" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-add" onclick="addEducation()">
+            + Add Education
+          </button>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="form-section">
+          <h2>🚀 Projects</h2>
+          <div id="projectsContainer">
+            <div class="project-item">
+              <div class="form-group">
+                <label>Project Name</label>
+                <input
+                  type="text"
+                  name="proj_name[]"
+                  placeholder="E-commerce Platform"
+                />
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea
+                  name="proj_detail[]"
+                  rows="2"
+                  placeholder="Project details and technologies used..."
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="btn-add" onclick="addProject()">
+            + Add Project
+          </button>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="form-section">
+          <h2>🔗 Portfolio Links</h2>
+          <div class="form-group">
+            <label for="portfolioLinks">Portfolio Links (one per line)</label>
+            <textarea
+              id="portfolioLinks"
+              name="portfolioLinks"
+              rows="3"
+              placeholder="https://github.com/yourusername&#10;https://linkedin.com/in/yourprofile"
+            ></textarea>
+          </div>
+        </section>
+
+        <!-- Submit Button -->
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" id="generateBtn">
+            <span id="btnText">Generate Resume PDF</span>
+            <span id="btnLoader" class="loader" style="display: none"></span>
+          </button>
+        </div>
+      </form>
+
+      <div id="errorMessage" class="error-message" style="display: none"></div>
+      <div id="successMessage" class="success-message" style="display: none">
+        Resume generated successfully!
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
